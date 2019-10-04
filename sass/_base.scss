@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+:root {
+	-color-primary: #2f3640;
+	-color-secondary: #dcdde1;
+	-color-white: #ffffff;
+}
+
+html {
+	font-size: 62.5%;
+	box-sizing: border-box;
+}
+
+@media only screen and (max-width: 68.75em) {
+	html {
+		font-size: 50%;
+	}
+}
+
+body {
+	font-family: "Arimo", sans-serif;
+	line-height: 1.7;
+	font-weight: 400;
+}
+
+.container {
+	background-color: var(-color-white);
+	width: 100%;
+	display: flex;
+}
