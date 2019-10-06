@@ -77,11 +77,110 @@
 		font-size: 1.9rem;
 		align-items: center;
 		height: 100%;
-		background-color: var(--color-grey-light-2);
+		background-color: var(--color-grey-light-1);
 		transition: all 0.3s;
 
 		&:hover {
-			background-color: var(--color-grey-light-1);
+			background-color: var(--color-grey-light-2);
+		}
+	}
+}
+
+////////////////////////////////////////
+// SIDE NAVIGATION
+.side-nav {
+	font-size: 1.4rem;
+	list-style: none;
+	margin-top: 3.5rem;
+
+	@media only screen and (max-width: $bp-medium) {
+		display: flex;
+		margin: 0;
+	}
+
+	&__item {
+		position: relative;
+
+		&:not(:last-child) {
+			margin-bottom: 0.5rem;
+
+			@media only screen and (max-width: $bp-medium) {
+				margin: 0;
+			}
+		}
+
+		@media only screen and (max-width: $bp-medium) {
+			flex: 1;
+		}
+	}
+
+	&__link i {
+		margin-right: 1.5rem;
+	}
+
+	&__link:link,
+	&__link:visited {
+		color: var(--color-grey-light-1);
+		text-decoration: none;
+		text-transform: uppercase;
+		display: block;
+		padding: 1.5rem 3rem;
+		position: relative;
+		z-index: 10;
+
+		display: flex;
+		align-items: center;
+
+		@media only screen and (max-width: $bp-medium) {
+			justify-content: center;
+			padding: 2rem;
+		}
+
+		@media only screen and (max-width: $bp-small) {
+			flex-direction: column;
+			padding: 1.5rem 0.5rem;
+		}
+	}
+}
+
+////////////////////////////////////////
+// LEGAL TEXT
+.legal {
+	font-size: 1.2rem;
+	color: var(--color-grey-light-4);
+	text-align: center;
+	padding: 2.5rem;
+
+	@media only screen and (max-width: $bp-medium) {
+		display: none;
+	}
+}
+
+////////////////////////////////////////
+// result section
+
+.result {
+	position: relative;
+	padding: 2rem;
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.card {
+	height: 40vh;
+	border: var(--line);
+
+	&__img {
+		width: 100%;
+		overflow: hidden;
+
+		&-item {
+			object-fit: cover;
+			width: 100%;
+			height: 25vh;
 		}
 	}
 }

@@ -86,10 +86,76 @@ body {
     font-size: 1.9rem;
     align-items: center;
     height: 100%;
-    background-color: var(--color-grey-light-2);
+    background-color: var(--color-grey-light-1);
     transition: all 0.3s; }
     .likes__field:hover {
-      background-color: var(--color-grey-light-1); }
+      background-color: var(--color-grey-light-2); }
+
+.side-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.5rem; }
+  @media only screen and (max-width: 56.25em) {
+    .side-nav {
+      display: flex;
+      margin: 0; } }
+  .side-nav__item {
+    position: relative; }
+    .side-nav__item:not(:last-child) {
+      margin-bottom: 0.5rem; }
+      @media only screen and (max-width: 56.25em) {
+        .side-nav__item:not(:last-child) {
+          margin: 0; } }
+    @media only screen and (max-width: 56.25em) {
+      .side-nav__item {
+        flex: 1; } }
+  .side-nav__link i {
+    margin-right: 1.5rem; }
+  .side-nav__link:link, .side-nav__link:visited {
+    color: var(--color-grey-light-1);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    padding: 1.5rem 3rem;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center; }
+    @media only screen and (max-width: 56.25em) {
+      .side-nav__link:link, .side-nav__link:visited {
+        justify-content: center;
+        padding: 2rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .side-nav__link:link, .side-nav__link:visited {
+        flex-direction: column;
+        padding: 1.5rem 0.5rem; } }
+
+.legal {
+  font-size: 1.2rem;
+  color: var(--color-grey-light-4);
+  text-align: center;
+  padding: 2.5rem; }
+  @media only screen and (max-width: 56.25em) {
+    .legal {
+      display: none; } }
+
+.result {
+  position: relative;
+  padding: 2rem; }
+  .result__container {
+    display: flex;
+    flex-direction: column; }
+
+.card {
+  height: 40vh;
+  border: var(--line); }
+  .card__img {
+    width: 100%;
+    overflow: hidden; }
+    .card__img-item {
+      object-fit: cover;
+      width: 100%;
+      height: 25vh; }
 
 .container {
   background-color: var(--color-white);
@@ -114,8 +180,26 @@ body {
 
 .sidebar {
   background-color: var(--color-primary);
-  flex: 0 0 18%; }
+  flex: 0 0 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
 
 .result {
   background-color: var(--color-grey-light-2);
   flex: 1; }
+
+.row {
+  width: 100%;
+  margin: 0 auto; }
+  .row [class^="col-"] {
+    float: left; }
+  .row .col-1-of-3 {
+    margin: 0 2rem;
+    width: calc(((100%) / 3) - 4rem); }
+    @media only screen and (max-width: 56.25em) {
+      .row .col-1-of-3 {
+        width: calc((100%) / 2); } }
+    @media only screen and (max-width: 37.5em) {
+      .row .col-1-of-3 {
+        width: 100%; } }

@@ -30,7 +30,7 @@
                 </form>
                 <div class="likes">
                     <div class="likes__field">
-                        <i class="ion-thumbsup"></i>
+                        <i class="ion-ios-heart-outline"></i>
                     </div>
                 </div>
             </header>
@@ -40,14 +40,71 @@
                 <!-- -------------------------------------------------------------------------- -->
                 <!-- Side Navigation Section -->
                 <nav class="sidebar">
+                    <ul class="side-nav">
+                        <li class="side-nav__item side-nav__item--active">
+                            <a href="#" class="side-nav__link">
+                                <i class="ion-clock"></i>
+                                <span>Latest movies</span>
+                            </a>
+                        </li>
+                        <li class="side-nav__item">
+                            <a href="#" class="side-nav__link">
+                                <i class="ion-ios-videocam"></i>
+                                <span>Most viewed</span>
+                            </a>
+                        </li>
+                        <li class="side-nav__item">
+                            <a href="#" class="side-nav__link">
+                                <i class="ion-flame"></i>
+                                <span>Trending</span>
+                            </a>
+                        </li>
+                        <li class="side-nav__item">
+                            <a href="#" class="side-nav__link">
+                                <i class="ion-map"></i>
+                                <span>About us</span>
+                            </a>
+                        </li>
+                    </ul>
 
+                    <div class="legal">
+                        &copy; 2019 by Kevin Kiragu. All rights reserved.
+                    </div>
                 </nav>
                 <!-- Side Navigation end -->
 
                 <!-- -------------------------------------------------------------------------- -->
                 <!-- Content Section -->
                 <main class="result">
+                    <div class="result__container">
+                        <div class="row latest__movies ">
+                            <div class="col-1-of-3 card ">
+                                <div class="card__img">
+                                    <img class="card__img-item" src="./img/atlantique.jpg" alt="movie__poster">
+                                </div>
+                                <div class="card__details">
+                                    <h3 class="card__details-title">I am a movie</h3>
+                                    <p class="card__details-title">During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an
+                                        infamous psychopathic crime figure.</p>
+                                </div>
+                                <div class="card__footer">
+                                    <div class="card__btn">
+                                        <a href="#" class="card__btn-link">View</a>
+                                    </div>
+                                    <div class="card__btn">
+                                        <i class="ion-ios-heart-outline"></i>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
+                        <div class="trending__movies">
+
+                        </div>
+                        <div class="mostViewed__movies">
+
+                        </div>
+                    </div>
                 </main>
                 <!-- Content section end -->
             </div>
