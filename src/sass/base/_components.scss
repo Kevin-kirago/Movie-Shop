@@ -226,3 +226,28 @@
 		}
 	}
 }
+
+// ///////////////////////////////////////
+// loader
+.loader {
+	margin: 5rem auto;
+	text-align: center;
+
+	i {
+		display: inline-block;
+		font-size: 3rem;
+		color: var(--color-primary);
+		transform-origin: 44% 50%;
+		animation: rotate 1.5s infinite linear;
+		-webkit-animation: rotate 1.5s infinite linear;
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

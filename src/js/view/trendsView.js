@@ -18,7 +18,7 @@ const renderResult = result => {
         </div>
     </div>`;
 
-	elements.trendsContainer.insertAdjacentHTML("beforeend", markup);
+	elements.resultsContainer.insertAdjacentHTML("beforeend", markup);
 };
 
 export const renderTrendingMovies = obj => {
