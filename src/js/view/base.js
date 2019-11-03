@@ -3,6 +3,8 @@ export const elements = {
 	searchInput: document.querySelector(".search__input"),
 	searchForm: document.querySelector(".search"),
 	resultsHeading: document.querySelector(".result__heading"),
+	popupContainer: document.querySelector(".popup"),
+	popupContentContainer: document.querySelector(".popup__content"),
 	loader: "loader"
 };
 

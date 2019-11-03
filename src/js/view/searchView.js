@@ -17,7 +17,7 @@ export const clearResultsContainer = () => {
 const renderResult = result => {
 	if (result.poster_path !== null) {
 		const markup = `
-        <div class="col-1-of-4 card">
+        <div class="col-1-of-4 card" id="${result.id}">
             <div class="card__content">
                 <img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" class="card__content-img" alt="movie photo">
                 <div class="card__content-viewIcon">

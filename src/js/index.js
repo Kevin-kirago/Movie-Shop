@@ -1,14 +1,18 @@
 import Result from "./model/Trends";
 import Search from "./model/Search";
+import Movie from "./model/Movies";
 
 import * as trendsView from "./view/trendsView";
 import * as searchView from "./view/searchView";
+import * as moviesView from "./view/moviesView";
+
 import { elements, renderLoader, clearLoader } from "./view/base";
 
 /*   Global state of the app
  * - Trending movies object
  * - search object
- * -
+ * - Movie object
+ * - Likes object
  */
 
 const state = {};
@@ -58,7 +62,6 @@ const controllSearch = async () => {
 		try {
 			// get the result
 			await state.search.getResult();
-			console.log(state.search.result);
 
 			// clear loader
 			clearLoader();
@@ -75,4 +78,43 @@ const controllSearch = async () => {
 elements.searchForm.addEventListener("keyup", e => {
 	e.preventDefault();
 	controllSearch();
+});
+
+// /////////////////////////////////////////////////////////////////////////////////
+// Search Object
+// /////////////////////////////////////////////////////////////////////////////////
+
+const controllMovies = async e => {
+	// Get the id
+	const id = e.target.parentElement.parentElement.id;
+
+	state.movie = new Movie(parseInt(id));
+
+	// display the popup
+	moviesView.togglePopup();
+
+	// Render a loader
+	renderLoader(elements.popupContentContainer);
+
+	try {
+		// get the movie
+		await state.movie.getMovie();
+		console.log(state.movie.result);
+
+		// clear the loader
+		clearLoader();
+
+		// populate the popup
+		moviesView.renderPopupContent(state.movie.result);
+	} catch (E) {
+		console.log(E);
+	}
+};
+
+// Adds the popup
+elements.resultsContainer.addEventListener("click", controllMovies);
+
+// Removes the popup
+document.querySelector(".popup__close", ".popup__close *").addEventListener("click", () => {
+	moviesView.togglePopup();
 });
