@@ -5,6 +5,10 @@ export const togglePopup = () => {
 	elements.popupContainer.classList.toggle("show__popup");
 };
 
+export const clearPopupContent = () => {
+	elements.popupContentContainer.innerHTML = "";
+};
+
 // render popup result
 const renderResult = result => {
 	const markup = `
@@ -13,7 +17,7 @@ const renderResult = result => {
     </div>
     <div class="popup__content-col">
         <div class="popup__content-description">
-            <h1 class="popup__content-title"><span>Title:</span>&nbsp;${result.title}</h1>
+            <h1 class="popup__content-title"><span>Title:</span>&nbsp;${result.title ? result.title : result.name}</h1>
             <h2>Overview</h2>
             <p class="popup__content-story">
                 ${result.overview}
@@ -26,7 +30,7 @@ const renderResult = result => {
         </div>
     </div>`;
 
-	elements.popupContentContainer.innerHTML = markup;
+	elements.popupContentContainer.insertAdjacentHTML("beforeend", markup);
 };
 
 // Populate the popup

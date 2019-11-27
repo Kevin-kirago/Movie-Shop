@@ -5,6 +5,7 @@ export const elements = {
 	resultsHeading: document.querySelector(".result__heading"),
 	popupContainer: document.querySelector(".popup"),
 	popupContentContainer: document.querySelector(".popup__content"),
+	likesPanel: document.querySelector(".likes_panel"),
 	loader: "loader"
 };
 

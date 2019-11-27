@@ -21,6 +21,7 @@ window.state = state;
 // /////////////////////////////////////////////////////////////////////////////////
 // Trending movies object
 // /////////////////////////////////////////////////////////////////////////////////
+
 const controllTrendingMovies = async () => {
 	state.trends = new Result();
 
@@ -47,6 +48,7 @@ document.addEventListener("DOMContentLoad", controllTrendingMovies());
 // /////////////////////////////////////////////////////////////////////////////////
 // Search Object
 // /////////////////////////////////////////////////////////////////////////////////
+
 const controllSearch = async () => {
 	// Get/read input
 	const query = searchView.getInput();
@@ -85,13 +87,16 @@ elements.searchForm.addEventListener("keyup", e => {
 // /////////////////////////////////////////////////////////////////////////////////
 
 const controllMovies = async e => {
+	// console.log(e.target);
 	// Get the id
 	const id = e.target.parentElement.parentElement.id;
-
 	state.movie = new Movie(parseInt(id));
 
 	// display the popup
 	moviesView.togglePopup();
+
+	// clear content
+	moviesView.clearPopupContent();
 
 	// Render a loader
 	renderLoader(elements.popupContentContainer);
@@ -99,7 +104,6 @@ const controllMovies = async e => {
 	try {
 		// get the movie
 		await state.movie.getMovie();
-		console.log(state.movie.result);
 
 		// clear the loader
 		clearLoader();
@@ -112,9 +116,25 @@ const controllMovies = async e => {
 };
 
 // Adds the popup
-elements.resultsContainer.addEventListener("click", controllMovies);
+// elements.resultsContainer.addEventListener("click", controllMovies);
 
 // Removes the popup
 document.querySelector(".popup__close", ".popup__close *").addEventListener("click", () => {
 	moviesView.togglePopup();
+});
+
+// /////////////////////////////////////////////////////////////////////////////////
+// Likes Object
+// /////////////////////////////////////////////////////////////////////////////////
+
+const likeMovies = async e => {
+	console.log(e.target);
+};
+
+elements.resultsContainer.addEventListener("click", e => {
+	if (e.target.matches(".card__content-img") || e.target.matches(".card__content-viewIcon, .card__content-viewIcon *")) {
+		controllMovies(e);
+	} else if (e.target.matches(".card__content-likeIcon, .card__content-likeIcon *")) {
+		likeMovies(e);
+	}
 });
