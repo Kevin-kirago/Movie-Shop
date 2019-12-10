@@ -1,10 +1,12 @@
 import Result from "./model/Trends";
 import Search from "./model/Search";
 import Movie from "./model/Movies";
+import Likes from "./model/Likes";
 
 import * as trendsView from "./view/trendsView";
 import * as searchView from "./view/searchView";
 import * as moviesView from "./view/moviesView";
+import * as likesView from "./view/likesView";
 
 import { elements, renderLoader, clearLoader } from "./view/base";
 
@@ -57,7 +59,6 @@ const controllSearch = async () => {
 		state.search = new Search(query);
 
 		// Prepare the ui
-		// searchView.clearInput();
 		searchView.clearResultsContainer();
 		renderLoader(elements.resultsContainer);
 
@@ -87,7 +88,6 @@ elements.searchForm.addEventListener("keyup", e => {
 // /////////////////////////////////////////////////////////////////////////////////
 
 const controllMovies = async e => {
-	// console.log(e.target);
 	// Get the id
 	const id = e.target.parentElement.parentElement.id;
 	state.movie = new Movie(parseInt(id));
@@ -115,9 +115,6 @@ const controllMovies = async e => {
 	}
 };
 
-// Adds the popup
-// elements.resultsContainer.addEventListener("click", controllMovies);
-
 // Removes the popup
 document.querySelector(".popup__close", ".popup__close *").addEventListener("click", () => {
 	moviesView.togglePopup();
@@ -128,7 +125,30 @@ document.querySelector(".popup__close", ".popup__close *").addEventListener("cli
 // /////////////////////////////////////////////////////////////////////////////////
 
 const likeMovies = async e => {
-	console.log(e.target);
+	if (!state.likes) state.likes = new Likes();
+
+	// get the id
+	const curId = parseInt(e.target.parentElement.parentElement.parentElement.id);
+
+	// get the object
+	try {
+		await state.likes.getMovie(curId);
+
+		const { id, title, genres, poster_path } = state.likes.result;
+
+		// checks wheather user has not yet liked the current movie
+		if (!state.likes.isLiked(id)) {
+			// add like to state
+			state.likes.addLike(id, title, genres[0].name, poster_path);
+
+			// Toggle like btn
+			likesView.toggleLikeBtn(true);
+
+			// Add like to ui
+		}
+	} catch (e) {
+		console.log(e);
+	}
 };
 
 elements.resultsContainer.addEventListener("click", e => {
