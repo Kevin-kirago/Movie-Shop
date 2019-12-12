@@ -8,14 +8,14 @@ import * as searchView from "./view/searchView";
 import * as moviesView from "./view/moviesView";
 import * as likesView from "./view/likesView";
 
-import { elements, renderLoader, clearLoader } from "./view/base";
+import { elements, renderLoader, clearLoader, toggleLikesIcon } from "./view/base";
 
 /*   Global state of the app
  * - Trending movies object
  * - search object
  * - Movie object
  * - Likes object
- */
+/*/
 
 const state = {};
 window.state = state;
@@ -142,12 +142,30 @@ const likeMovies = async e => {
 			state.likes.addLike(id, title, genres[0].name, poster_path);
 
 			// Toggle like btn
-			likesView.toggleLikeBtn(true);
+			likesView.toggleLikeBtn(true, curId.toString());
 
 			// Add like to ui
+			likesView.addLikeToUI(id, poster_path, title, genres[0].name);
+		} else {
+			// remove like from state
+			state.likes.removeLike(id);
+
+			// Toggle like btn
+			likesView.toggleLikeBtn(false, curId.toString());
+
+			// Remove like from to ui
+			likesView.removeLikeFromUI(curId.toString());
 		}
 	} catch (e) {
 		console.log(e);
+	}
+
+	if (state.likes !== undefined && state.likes.getNumLikes() > 0) {
+		console.log(state.likes.getNumLikes());
+		toggleLikesIcon(true);
+	} else {
+		console.log(state.likes.getNumLikes());
+		toggleLikesIcon(false);
 	}
 };
 

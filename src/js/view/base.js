@@ -6,6 +6,7 @@ export const elements = {
 	popupContainer: document.querySelector(".popup"),
 	popupContentContainer: document.querySelector(".popup__content"),
 	likesPanel: document.querySelector(".likes_panel"),
+	likesList: document.querySelector(".likes__list"),
 	loader: "loader"
 };
 
@@ -26,4 +27,9 @@ export const clearLoader = () => {
 	if (loader) {
 		loader.parentElement.removeChild(loader);
 	}
+};
+
+export const toggleLikesIcon = isLiked => {
+	const iconStr = isLiked ? "ion-ios-heart" : "ion-ios-heart-outline";
+	document.querySelector(".likes__field i").className = iconStr;
 };

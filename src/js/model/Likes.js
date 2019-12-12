@@ -26,7 +26,7 @@ export default class Likes {
 		return like;
 	}
 
-	deleteLike(id) {
+	removeLike(id) {
 		const index = this.Likes.findIndex(el => el.id === id);
 		this.Likes.splice(index, 1);
 	}
