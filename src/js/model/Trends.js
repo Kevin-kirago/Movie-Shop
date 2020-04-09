@@ -6,6 +6,7 @@ export default class Result {
 		try {
 			const data = await axios(`${proxy}https://api.themoviedb.org/3/trending/movies/day?api_key=${key}`);
 			this.trendingMovies = data.data.results;
+			console.log(data);
 		} catch (e) {
 			console.log(typeof e);
 		}

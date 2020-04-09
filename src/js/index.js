@@ -75,6 +75,9 @@ const controllSearch = async () => {
 			console.log(e);
 			console.log(typeof e);
 		}
+	} else {
+		searchView.clearResultsContainer();
+		document.addEventListener("DOMContentLoad", controllTrendingMovies());
 	}
 };
 
@@ -161,10 +164,8 @@ const likeMovies = async e => {
 	}
 
 	if (state.likes !== undefined && state.likes.getNumLikes() > 0) {
-		console.log(state.likes.getNumLikes());
 		toggleLikesIcon(true);
 	} else {
-		console.log(state.likes.getNumLikes());
 		toggleLikesIcon(false);
 	}
 };

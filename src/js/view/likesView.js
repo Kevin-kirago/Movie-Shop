@@ -11,6 +11,10 @@ export const toggleLikeBtn = (isLiked, id) => {
 	});
 };
 
+export const toggleLikeMenu = numLike => {
+	elements.likesPanel.style.visibility = numLike > 0 ? "visible" : "hidden";
+};
+
 export const addLikeToUI = (id, poster, title, genre) => {
 	const html = `
 	<li class="likes__item" id="${id}">
