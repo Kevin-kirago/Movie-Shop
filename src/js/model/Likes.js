@@ -8,7 +8,7 @@ export default class Likes {
 
 	async getMovie(id) {
 		try {
-			const res = await axios(`${proxy}https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`);
+			const res = await axios(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`);
 			this.result = res.data;
 		} catch (E) {
 			console.log(E);
@@ -16,7 +16,7 @@ export default class Likes {
 	}
 
 	isLiked(id) {
-		return this.Likes.findIndex(el => el.id === id) !== -1;
+		return this.Likes.findIndex((el) => el.id === id) !== -1;
 	}
 
 	addLike(id, title, genres, image_url) {
@@ -27,7 +27,7 @@ export default class Likes {
 	}
 
 	removeLike(id) {
-		const index = this.Likes.findIndex(el => el.id === id);
+		const index = this.Likes.findIndex((el) => el.id === id);
 		this.Likes.splice(index, 1);
 	}
 

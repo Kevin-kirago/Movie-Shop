@@ -33,6 +33,7 @@ const controllTrendingMovies = async () => {
 	try {
 		// 1. Get data from the data controller
 		await state.trends.getTrendingMovies();
+		console.log(state.trends);
 
 		// 2. Prepare the ui
 		clearLoader();
@@ -81,7 +82,7 @@ const controllSearch = async () => {
 	}
 };
 
-elements.searchForm.addEventListener("keyup", e => {
+elements.searchForm.addEventListener("keyup", (e) => {
 	e.preventDefault();
 	controllSearch();
 });
@@ -90,7 +91,7 @@ elements.searchForm.addEventListener("keyup", e => {
 // Search Object
 // /////////////////////////////////////////////////////////////////////////////////
 
-const controllMovies = async e => {
+const controllMovies = async (e) => {
 	// Get the id
 	const id = e.target.parentElement.parentElement.id;
 	state.movie = new Movie(parseInt(id));
@@ -127,7 +128,7 @@ document.querySelector(".popup__close", ".popup__close *").addEventListener("cli
 // Likes Object
 // /////////////////////////////////////////////////////////////////////////////////
 
-const likeMovies = async e => {
+const likeMovies = async (e) => {
 	if (!state.likes) state.likes = new Likes();
 
 	// get the id
@@ -170,7 +171,7 @@ const likeMovies = async e => {
 	}
 };
 
-elements.resultsContainer.addEventListener("click", e => {
+elements.resultsContainer.addEventListener("click", (e) => {
 	if (e.target.matches(".card__content-img") || e.target.matches(".card__content-viewIcon, .card__content-viewIcon *")) {
 		controllMovies(e);
 	} else if (e.target.matches(".card__content-likeIcon, .card__content-likeIcon *")) {
