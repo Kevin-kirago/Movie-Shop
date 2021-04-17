@@ -15,7 +15,7 @@ import { elements, renderLoader, clearLoader, toggleLikesIcon } from "./view/bas
  * - search object
  * - Movie object
  * - Likes object
-/*/
+*/
 
 const state = {};
 window.state = state;
